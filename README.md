@@ -4,13 +4,13 @@ Live prototype: publish `index.html` through GitHub Pages, Netlify, or Vercel. T
 
 ## What this demonstrates
 
-- An executive dashboard with 8 enterprise KPIs across Finance, Product, Credit, and Risk.
-- A Credit & Lending dashboard: funnel, funded conversion, portfolio quality, risk segment monitor, and a decision recommendation.
+- An executive dashboard with 8 enterprise KPIs across Finance, Product, Financing, Inclusion, and Responsible AI.
+- A Credit & Financing dashboard: application funnel, disbursed conversion, portfolio quality, risk segment monitor, and a decision recommendation.
 - A transparent metric-conflict screen that shows the three pre-existing meanings of “active customer” and a certified enterprise measure.
 - A 19-metric data dictionary including owner, definition, formula, source mart, refresh cadence, and certification status.
 - A self-service dataset catalogue, access SLA, support service-level expectations, and a practical 90-day plan for a solo BI lead.
 
-All values are deterministic synthetic data designed only for this exercise. They do not represent Mal, any customer, or any banking portfolio.
+All values are deterministic synthetic data designed only for this exercise. They do not represent Mal, any customer, or any banking portfolio. Terminology is deliberately Sharia-aligned: the prototype reports financing profit income and customer balances, not conventional interest income or loans.
 
 ## Stack choice
 
@@ -26,24 +26,26 @@ The target production mart pattern is:
 |---|---|---|
 | `dim_customer` | customer | verified customer identity and exclusions |
 | `mart_customer_monthly` | customer-month | certified activity, retention, activation |
-| `mart_credit_application_daily` | application-day | application through funding funnel |
-| `mart_credit_portfolio_daily` | loan-day | principal, DPD, vintage, charge-offs |
-| `mart_finance_daily` / `monthly` | account-day / month | balances, revenue, GL reconciliation |
+| `mart_financing_application_daily` | application-day | application through financing-disbursement funnel |
+| `mart_financing_portfolio_daily` | financing-contract-day | principal, DPD, vintage, credit loss |
+| `mart_finance_daily` / `monthly` | account-day / month | balances, financing profit income, GL reconciliation |
+| `mart_ai_decision_daily` | decision-day | explanations, fairness monitoring, approved AI decisions |
+| `mart_sharia_controls_daily` | control-day | product, transaction, and income control exceptions |
 | `bi_observability_daily` | mart-day | freshness and data-quality controls |
 
-The intended joins are through a conformed customer key and calendar date. Financial and credit measures retain their native account/loan grains and are aggregated only after their prescribed filters.
+The intended joins are through a conformed customer key and calendar date. Financial and financing measures retain their native account / financing-contract grains and are aggregated only after their prescribed filters.
 
 ## Reading the metric conflict resolution view
 
 The three original measures are not labelled “wrong.” They answer different domain questions:
 
-1. **Finance billable account** identifies settled revenue-bearing activity.
+1. **Finance income-generating customer** identifies settled profit- or fee-generating activity.
 2. **Product engaged user** identifies meaningful digital engagement.
-3. **Credit active borrower** identifies an outstanding credit relationship.
+3. **Credit active financing customer** identifies an outstanding financing relationship.
 
-The certified **Enterprise Active Customer** is a purpose-built enterprise measure: a unique verified customer with at least one posted payment transaction **or** an open loan principal balance at month-end. It is de-duplicated at the customer level, excludes fraud-confirmed / closed accounts, and is refreshed daily. The reconciliation line demonstrates why the figure is 18,640: 16,980 Finance-billable customers plus 1,660 active borrowers without payment activity. Product engagement is retained as a domain diagnostic rather than forced into an enterprise financial-activity measure.
+The certified **Enterprise Active Customer** is a purpose-built enterprise measure: a unique verified customer with at least one posted payment transaction **or** an open financing principal balance at month-end. It is de-duplicated at the customer level, excludes fraud-confirmed / closed accounts, and is refreshed daily. The reconciliation line demonstrates why the figure is 18,640: 16,980 Finance income-generating customers plus 1,660 active financing customers without payment activity. Product engagement is retained as a domain diagnostic rather than forced into an enterprise financial-activity measure.
 
-Certification is governed by a monthly Metric Council, with Product Analytics accountable for the measure and Finance, Credit Operations, and Credit Risk as consulted parties. A certified KPI change requires an owner, decision use case, source/lineage impact assessment, test plan, and Principal Business Intelligence approval.
+Certification is governed by a monthly Metric Council, with Product Analytics accountable for the measure and Finance, Credit Operations, Credit Risk, Sharia Governance, and Responsible AI Governance as consulted parties. A certified KPI change requires an owner, decision use case, source/lineage impact assessment, test plan, and Principal Business Intelligence approval.
 
 ## 90-day approach
 
