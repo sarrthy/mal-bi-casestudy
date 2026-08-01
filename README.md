@@ -1,4 +1,4 @@
-# Mal Enterprise BI Foundation — case study prototype
+# Mal Enterprise BI Foundation — Principal Business Intelligence case study
 
 Live prototype: publish `index.html` through GitHub Pages, Netlify, or Vercel. The site is intentionally a no-backend static application so reviewers can access it without an account.
 
@@ -43,7 +43,7 @@ The three original measures are not labelled “wrong.” They answer different 
 
 The certified **Enterprise Active Customer** is a purpose-built enterprise measure: a unique verified customer with at least one posted payment transaction **or** an open loan principal balance at month-end. It is de-duplicated at the customer level, excludes fraud-confirmed / closed accounts, and is refreshed daily. The reconciliation line demonstrates why the figure is 18,640: 16,980 Finance-billable customers plus 1,660 active borrowers without payment activity. Product engagement is retained as a domain diagnostic rather than forced into an enterprise financial-activity measure.
 
-Certification is governed by a monthly Metric Council, with Product Analytics accountable for the measure and Finance, Credit Operations, and Credit Risk as consulted parties. A certified KPI change requires an owner, decision use case, source/lineage impact assessment, test plan, and BI Lead approval.
+Certification is governed by a monthly Metric Council, with Product Analytics accountable for the measure and Finance, Credit Operations, and Credit Risk as consulted parties. A certified KPI change requires an owner, decision use case, source/lineage impact assessment, test plan, and Principal Business Intelligence approval.
 
 ## 90-day approach
 
