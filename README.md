@@ -64,7 +64,7 @@ Then visit `http://localhost:8080`.
 ### GitHub Pages
 
 1. Create a GitHub repository and push this folder’s contents to `main`.
-2. In **Settings → Pages**, select **Deploy from a branch**, then `main` and `/ (root)`.
-3. GitHub publishes it at `https://<github-user>.github.io/<repository>/` without login.
+2. In **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source.
+3. The included workflow publishes it at `https://<github-user>.github.io/<repository>/` without login.
 
 Because this is static, no credentials, environment variables, or server process are required.
