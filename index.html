@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mal | Enterprise BI Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#executive"><span class="brand-mark">m</span><span>mal<span class="dot">.</span></span></a>
+    <div class="workspace"><span class="eyebrow">WORKSPACE</span><strong>Enterprise BI</strong><span class="pill pill-live"><i></i> Certified layer</span></div>
+    <nav aria-label="Dashboard navigation">
+      <a class="nav-link active" href="#executive"><span>▦</span>Executive overview</a>
+      <a class="nav-link" href="#credit"><span>◒</span>Credit &amp; lending</a>
+      <a class="nav-link" href="#conflicts"><span>⇄</span>Metric resolution</a>
+      <a class="nav-link" href="#dictionary"><span>▤</span>KPI dictionary</a>
+      <a class="nav-link" href="#self-service"><span>⌘</span>Self-service hub</a>
+      <a class="nav-link" href="#roadmap"><span>↗</span>90-day plan</a>
+    </nav>
+    <div class="sidebar-footer"><span class="eyebrow">DATA AS OF</span><strong>31 Jul 2026</strong><small>Synthetic demo environment<br>Daily certified refresh</small></div>
+  </aside>
+
+  <main>
+    <section id="executive" class="page-section executive">
+      <header class="topbar">
+        <div><p class="eyebrow">EXECUTIVE COMMAND CENTER</p><h1>One view of Mal’s growth, health &amp; control.</h1></div>
+        <div class="header-actions"><button class="select-button" id="periodButton">Jul 2026 <span>⌄</span></button><button class="export-button" id="exportButton">↓ Export brief</button></div>
+      </header>
+      <div class="narrative"><span class="signal">●</span><p><strong>Executive readout:</strong> Customer activity and deposits are growing while credit quality remains inside appetite. The near-term watch item is a 0.3pp month-on-month rise in early delinquency in the New-to-Credit segment.</p><span class="narrative-tag">7 certified KPIs · 1 exploratory</span></div>
+      <div class="kpi-grid" id="kpiGrid"></div>
+      <div class="grid-two chart-row">
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">GROWTH</p><h2>Certified active customers</h2></div><span class="change good">+7.1% QoQ</span></div><canvas id="activeTrend" aria-label="Certified active customer trend"></canvas><div class="panel-foot"><span>Definition: posted transaction OR open loan balance on period end</span><a href="#conflicts">Inspect definition →</a></div></article>
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">BALANCE SHEET</p><h2>Funding &amp; lending mix</h2></div><span class="period-label">AED millions</span></div><canvas id="balanceTrend" aria-label="Savings and loan book trend"></canvas><div class="panel-foot"><span>Savings balances fund 66.5% of the gross loan book</span><a href="#dictionary">View metric lineage →</a></div></article>
+      </div>
+      <div class="grid-two lower-row">
+        <article class="panel compact"><div class="panel-heading"><div><p class="eyebrow">CUSTOMER VALUE</p><h2>Revenue composition</h2></div></div><div class="bar-list" id="revenueMix"></div></article>
+        <article class="panel compact"><div class="panel-heading"><div><p class="eyebrow">CONTROL TOWER</p><h2>Executive attention</h2></div><span class="pill pill-warn">1 watch item</span></div><div class="attention-list"><div><span class="attention-icon amber">↗</span><p><strong>Early delinquency is 2.8%</strong><small>New-to-Credit is +0.3pp vs Jun; below 3.0% early-warning threshold.</small></p><a href="#credit">Review</a></div><div><span class="attention-icon teal">✓</span><p><strong>Approval rate is within policy</strong><small>61.8%, 1.2pp above the 60% operating floor.</small></p><a href="#credit">Review</a></div><div><span class="attention-icon violet">✓</span><p><strong>Data freshness is on time</strong><small>All certified marts refreshed at 06:15 GST.</small></p><a href="#self-service">Details</a></div></div></article>
+      </div>
+    </section>
+
+    <section id="credit" class="page-section">
+      <header class="section-title"><div><p class="eyebrow">DOMAIN DASHBOARD · CREDIT &amp; LENDING</p><h1>Growth with disciplined risk.</h1><p class="subtitle">A policy-aligned view of the application funnel, portfolio performance, and early risk signals.</p></div><span class="status-certified">● Certified metrics</span></header>
+      <div class="credit-summary" id="creditSummary"></div>
+      <div class="grid-65-35 chart-row">
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">APPLICATION FUNNEL</p><h2>From application to funded loan</h2></div><span class="period-label">July 2026</span></div><div class="funnel" id="funnel"></div><div class="panel-foot"><span>Approval rate uses final adjudication outcomes; withdrawn applications excluded from denominator.</span><a href="#dictionary">KPI-07 →</a></div></article>
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">QUALITY</p><h2>Delinquency by vintage</h2></div><span class="pill pill-warn">Watch</span></div><canvas id="vintageChart" aria-label="PAR30 by loan vintage"></canvas><div class="panel-foot"><span>Threshold: &lt;3.0% PAR30</span></div></article>
+      </div>
+      <div class="grid-two lower-row">
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">PORTFOLIO QUALITY</p><h2>30+ days past due trend</h2></div><span class="change good">−0.2pp YoY</span></div><canvas id="parTrend" aria-label="PAR30 trend"></canvas><div class="panel-foot"><span>PAR30 = principal outstanding on loans ≥30 DPD / gross loan book</span><a href="#dictionary">KPI-10 →</a></div></article>
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">RISK INDICATOR</p><h2>Early delinquency by segment</h2></div><span class="period-label">1–29 DPD / current book</span></div><div class="risk-meter" id="riskMeter"></div><div class="risk-note"><span class="dot-alert"></span><span><strong>New-to-Credit:</strong> 2.8% is below the 3.0% early-warning threshold, but trending upward.</span></div></article>
+      </div>
+      <article class="panel decision-panel"><div><p class="eyebrow">DECISION LOG · JULY 2026</p><h2>Recommended action</h2><p>Keep approval policy stable. Ask Credit Risk to validate the New-to-Credit score cut-off and cohort mix before the August campaign; no policy change is warranted on a single month of movement.</p></div><button onclick="location.hash='dictionary'">Review control definitions →</button></article>
+    </section>
+
+    <section id="conflicts" class="page-section">
+      <header class="section-title"><div><p class="eyebrow">METRIC CONFLICT RESOLUTION</p><h1>“Active customers” had three answers.</h1><p class="subtitle">This view makes the disagreement explicit, preserves domain context, and sets one certified enterprise definition.</p></div><span class="status-certified">● Governed decision</span></header>
+      <div class="conflict-hero"><div><p class="eyebrow">JULY 2026 · SAME CUSTOMER UNIVERSE</p><strong id="certifiedActive">18,640</strong><span>Certified active customers</span></div><div class="conflict-explainer"><strong>Why it changed</strong><p>The old measures answered different useful questions. They were never interchangeable. We retain them as named domain diagnostics and certify a union measure for enterprise reporting.</p><a href="#dictionary">See data contract →</a></div></div>
+      <div class="definition-cards" id="definitionCards"></div>
+      <article class="reconcile-panel"><div class="reconcile-heading"><div><p class="eyebrow">CERTIFICATION DECISION · METRIC COUNCIL 18 JUL 2026</p><h2>Enterprise Active Customer <span class="cert-badge">CERTIFIED</span></h2></div><span class="owner-chip">Owner: Product Analytics</span></div><div class="cert-definition"><div><span class="rule-number">01</span><p><strong>Population</strong> Unique verified customer IDs, excluding fraud-confirmed and closed accounts.</p></div><div><span class="rule-number">02</span><p><strong>Activity rule</strong> ≥1 <em>posted</em> payment transaction OR an open loan balance on the final calendar day of the month.</p></div><div><span class="rule-number">03</span><p><strong>Grain &amp; timing</strong> Calendar month; customer-level de-duplication across products; refreshed daily at 06:00 GST.</p></div></div><div class="reconciliation-line"><span>Finance billable</span><b>16,980</b><i>+</i><span>Credit borrowers outside payment activity</span><b>1,660</b><i>=</i><strong>18,640 certified</strong></div></article>
+      <div class="governance-note"><span>ⓘ</span><p><strong>Usage guardrail:</strong> Board packs, executive scorecards, and cross-domain targets must use the certified measure. The three local measures remain <em>exploratory / domain-only</em> and are labelled accordingly in BI.</p></div>
+    </section>
+
+    <section id="dictionary" class="page-section">
+      <header class="section-title"><div><p class="eyebrow">SEMANTIC LAYER REFERENCE</p><h1>KPI dictionary.</h1><p class="subtitle">A lightweight, versioned contract between domain teams until the formal BI platform is live.</p></div><div class="dictionary-controls"><label for="metricSearch" class="sr-only">Search metrics</label><input id="metricSearch" type="search" placeholder="Search name, owner, definition…"><select id="domainFilter" aria-label="Filter metrics by domain"><option value="All">All domains</option><option>Enterprise</option><option>Finance</option><option>Product</option><option>Credit</option><option>Risk</option></select></div></header>
+      <div class="dictionary-meta"><span><strong id="metricCount">18</strong> governed metrics</span><span>Version 1.0 · Approved 31 Jul 2026</span><span>Change control: BI Lead + accountable domain owner</span></div>
+      <div class="table-wrap"><table><thead><tr><th>Metric</th><th>Owner</th><th>Business definition</th><th>Formula</th><th>Data source</th><th>Refresh</th><th>Status</th></tr></thead><tbody id="dictionaryBody"></tbody></table></div>
+      <p class="table-note">Certified metrics are approved for enterprise use. Exploratory metrics can inform domain analysis but cannot be used in executive reporting or incentives.</p>
+    </section>
+
+    <section id="self-service" class="page-section">
+      <header class="section-title"><div><p class="eyebrow">SELF-SERVICE ANALYTICS HUB</p><h1>Find trusted data. Move fast safely.</h1><p class="subtitle">The first stop for analysts before building a new report, metric, or data extract.</p></div></header>
+      <div class="service-grid"><article class="service-card featured"><span class="card-icon">▦</span><p class="eyebrow">START HERE</p><h2>Certified datasets</h2><p>Production-ready aggregates with a named owner, freshness expectation, and approved joins. Use these for leadership reporting.</p><div class="dataset-list"><div><b>mart_customer_monthly</b><span>Customer lifecycle &amp; certified activity</span><em>Daily · Product</em></div><div><b>mart_credit_portfolio_daily</b><span>Balances, DPD, vintage &amp; risk flags</span><em>Daily · Credit Risk</em></div><div><b>mart_finance_monthly</b><span>Revenue, fees, deposits &amp; reconciliation</span><em>Month-end + 2 · Finance</em></div></div></article><article class="service-card"><span class="card-icon">↗</span><p class="eyebrow">ACCESS</p><h2>Request access</h2><p>Submit the Analytics Access form with the business purpose, datasets, required fields, manager, and data classification.</p><ul><li>Standard certified marts: <strong>1 business day</strong></li><li>PII / regulated data: <strong>5 business days + Risk sign-off</strong></li><li>New data product: <strong>triaged weekly</strong></li></ul><button id="accessButton">Start access request →</button></article><article class="service-card"><span class="card-icon">?</span><p class="eyebrow">SUPPORT</p><h2>Need a metric or dataset?</h2><p>Bring the decision it supports—not just a chart request. BI will identify the owner, existing source, and correct definition.</p><ul><li><strong>Definition question:</strong> response in 1 business day</li><li><strong>Certified KPI change:</strong> 5-day design review</li><li><strong>Dashboard issue:</strong> acknowledge in 4 business hours</li></ul><button id="officeHoursButton">Book office hours →</button></article></div>
+      <article class="panel operating-model"><div><p class="eyebrow">THE BI SERVICE CONTRACT</p><h2>How work enters the queue</h2></div><div class="service-flow"><span><b>01</b>Request<br><small>Decision &amp; owner</small></span><i>→</i><span><b>02</b>Triage<br><small>Risk &amp; reuse</small></span><i>→</i><span><b>03</b>Define<br><small>Metric contract</small></span><i>→</i><span><b>04</b>Deliver<br><small>Test &amp; certify</small></span></div></article>
+    </section>
+
+    <section id="roadmap" class="page-section">
+      <header class="section-title"><div><p class="eyebrow">SOLO BI LEAD · 90-DAY PLAN</p><h1>Establish trust before scale.</h1><p class="subtitle">A practical sequence for a regulated bank: reduce decision risk now, create repeatable governance next, and prepare the platform decision with evidence.</p></div></header>
+      <div class="roadmap-grid"><article class="roadmap-card now"><div class="roadmap-top"><span>Days 0–30</span><b>Foundation</b></div><h2>Align, inventory, and publish the first trusted layer.</h2><ul><li>Run 12 stakeholder interviews; map decisions, owners, and conflicting KPIs.</li><li>Stand up the KPI council and certify the top 15 metrics.</li><li>Ship this executive scorecard with lineage, freshness, and access controls.</li><li>Profile critical source data; log quality risks and reconciliation gaps.</li></ul><div class="outcome">Outcome: one trusted executive view and a governed metric backlog.</div></article><article class="roadmap-card next"><div class="roadmap-top"><span>Days 31–60</span><b>Repeatability</b></div><h2>Turn definitions into a durable service.</h2><ul><li>Prioritise a 3-mart semantic layer: customer, credit portfolio, finance.</li><li>Implement data tests for completeness, freshness, uniqueness, and GL reconciliation.</li><li>Publish role-based self-service access and intake / SLA workflow.</li><li>Train analysts on certified versus exploratory usage.</li></ul><div class="outcome">Outcome: recurring reporting no longer depends on manual reconciliation.</div></article><article class="roadmap-card later"><div class="roadmap-top"><span>Days 61–90</span><b>Scale</b></div><h2>Prove adoption and choose the right platform path.</h2><ul><li>Instrument adoption and time-to-insight; retire duplicate reports.</li><li>Expand certified KPIs to collections, retention, and unit economics.</li><li>Run a targeted BI tool evaluation against security, lineage, and semantic needs.</li><li>Submit a staffed 6-month roadmap with quantified data debt and ROI.</li></ul><div class="outcome">Outcome: an evidence-backed path from prototype to enterprise BI.</div></article></div>
+      <article class="stakeholder-panel"><div><p class="eyebrow">STAKEHOLDER COMMITMENT</p><h2>Weekly operating rhythm</h2></div><div class="rhythm"><span><b>Mon</b>Metric &amp; data quality review</span><span><b>Wed</b>Credit / Finance / Product office hours</span><span><b>Fri</b>Executive narrative &amp; decision log</span></div><p>Success is not dashboard count. It is fewer conflicting numbers, faster controlled decisions, and clear accountability for every business-critical KPI.</p></article>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
