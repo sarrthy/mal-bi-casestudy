@@ -4,7 +4,7 @@ Live prototype: publish `index.html` through GitHub Pages, Netlify, or Vercel. T
 
 ## What this demonstrates
 
-- An executive dashboard with 8 enterprise KPIs across Finance, Product, Financing, Inclusion, and Responsible AI.
+- An executive dashboard with 8 enterprise KPIs across Finance, Product, Financing, Inclusion, and Sharia Governance.
 - A Credit & Financing dashboard: application funnel, disbursed conversion, portfolio quality, risk segment monitor, and a decision recommendation.
 - A transparent metric-conflict screen that shows the three pre-existing meanings of “active customer” and a certified enterprise measure.
 - A 19-metric data dictionary including owner, definition, formula, source mart, refresh cadence, and certification status.
@@ -16,9 +16,13 @@ All values are deterministic synthetic data designed only for this exercise. The
 
 This is a dependency-light static web app: HTML, CSS, vanilla JavaScript, and Chart.js loaded from CDN. The choice is deliberate for the case-study context: it is public by default, deploys to GitHub Pages in seconds, and makes all definition logic reviewable in source control. In production, the presentation layer would be backed by a governed semantic layer and role-based BI platform—not browser-embedded data.
 
+The dashboard layout is intentionally portable: KPI cards, line charts, bar charts, tables, and native dropdown filters map directly to Power BI, Looker, Tableau, or Metabase. The prototype JavaScript only renders static synthetic data and local filtering; it is not a custom application requirement.
+
 ## Data model and metric consistency
 
 `data.js` is the prototype’s synthetic semantic layer. It defines monthly aggregates, application funnel counts, risk segments, the executive KPI values, and the dictionary. The dashboards render from the same source constants used by the dictionary.
+
+For a production-ready acquisition path and BI-tool implementation pattern, see [DATA_ARCHITECTURE.md](DATA_ARCHITECTURE.md) and [the source-system map](data/source_system_map.csv). The included synthetic CSVs can be imported directly into a BI tool to recreate the core executive and financing visuals.
 
 The target production mart pattern is:
 

@@ -1,0 +1,11 @@
+source_system,source_owner,extract_grain,ingestion_cadence,target_mart,required_fields,data_classification
+Core customer and account platform,Customer Operations,customer/account daily snapshot,Daily 05:00 GST,dim_customer;mart_customer_monthly,customer_id;verification_status;account_status;country;onboarded_at,Confidential PII
+Financing origination and servicing,Credit Operations,application and financing-contract daily snapshot,Daily 05:30 GST,mart_financing_application_daily;mart_financing_portfolio_daily,application_id;customer_id;decision;decision_at;disbursement_at;principal_outstanding;dpd,Confidential regulated
+Payment switch and ledger,Payments,posted transaction event,Near-real-time plus daily close,mart_payments_daily;mart_customer_monthly,transaction_id;customer_id;posted_at;amount;status;fee,Confidential regulated
+Finance ledger and product accounting,Finance Control,account/day and month close,Daily plus month-end +2,mart_finance_daily;mart_finance_monthly,account_id;profit_income;service_income;incentive;reversal;eligible_balance,Restricted finance
+Mobile product event stream,Product Analytics,customer event,Daily 05:45 GST,mart_product_events_daily;mart_customer_monthly,customer_id;event_name;event_at;platform;session_id,Confidential behavioural
+KYC and onboarding provider,Onboarding Operations,verification case event,Daily 05:15 GST,mart_onboarding_daily,customer_id;kyc_started_at;kyc_completed_at;outcome;reason_code,Restricted PII
+Customer support CRM,Customer Operations,case event,Daily 07:30 GST,mart_support_daily,case_id;customer_id;channel;opened_at;resolved_at;handoff_flag,Confidential PII
+Sharia control register,Sharia Governance,control exception event,Daily 06:45 GST,mart_sharia_controls_daily,exception_id;control_type;status;confirmed_at;product_id,Restricted governance
+AI decision service,Responsible AI Governance,decision event,Daily 07:00 GST,mart_ai_decision_daily,decision_id;customer_id;model_version;reason_code;explanation_delivered;human_handoff,Restricted model governance
+Data platform observability,Principal Business Intelligence,mart refresh and test run,Daily 07:00 GST,bi_observability_daily,mart_name;refresh_completed_at;freshness_sla_met;critical_test_status,Internal platform metadata

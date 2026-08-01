@@ -16,7 +16,7 @@ const BI_DATA = {
     {label:'PAR30', value:'2.4%', delta:'−0.2pp YoY', trend:'good', domain:'Risk', status:'Certified', note:'30+ DPD principal / gross financing book'},
     {label:'Digital activation', value:'74.6%', delta:'+2.9pp QoQ', trend:'good', domain:'Product', status:'Certified', note:'Activated in 7 days'},
     {label:'New-to-bank share', value:'43.8%', delta:'+2.1pp QoQ', trend:'good', domain:'Inclusion', status:'Certified', note:'Verified customers new to formal banking'},
-    {label:'AI explanation coverage', value:'96.2%', delta:'+1.8pp QoQ', trend:'good', domain:'Responsible AI', status:'Certified', note:'Qualifying AI decisions with explanation'}
+    {label:'Sharia control exceptions', value:'0', delta:'Within zero-tolerance', trend:'good', domain:'Sharia', status:'Certified', note:'Confirmed control exceptions this month'}
   ],
   incomeMix: [{name:'Financing profit income',value:3.04,color:'#155e59'},{name:'Payment & service income',value:1.46,color:'#39a293'},{name:'Balance-product income',value:1.12,color:'#8b7ad7'},{name:'Financing service fees',value:0.80,color:'#d39a41'}],
   funnel: [{name:'Applications started',value:12840,percent:100},{name:'Submitted',value:9640,percent:75.1},{name:'Adjudicated',value:8430,percent:65.7},{name:'Approved',value:5210,percent:40.6},{name:'Disbursed',value:4760,percent:37.1}],
